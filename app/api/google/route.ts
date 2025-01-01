@@ -1,15 +1,26 @@
 import { NextRequest } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAI = new GoogleGenerativeAI(String(process.env.GEMINI_API_KEY));
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+import axios from "axios";
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  const { query } = await request.json();
 
-  const result = await model.generateContent(body.prompt);
-  console.log(result);
-  return new Response(JSON.stringify(result), {
+  const Options = {
+    method: "GET",
+    url: "https://google-search74.p.rapidapi.com/",
+    params: {
+      query,
+      limit: "10",
+      related_keywords: "true",
+    },
+    headers: {
+      "x-rapidapi-key": "390729af46msh7b07557baa7bc37p14270ajsndc8cbbaf3852",
+      "x-rapidapi-host": "google-search74.p.rapidapi.com",
+    },
+  };
+
+  const result = await axios.request(Options);
+  console.log(result.data);
+  return new Response(JSON.stringify({ results: result.data }), {
     headers: { "Content-Type": "application/json" },
     status: 201,
   });
