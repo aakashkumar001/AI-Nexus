@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       related_keywords: "true",
     },
     headers: {
-      "x-rapidapi-key": "390729af46msh7b07557baa7bc37p14270ajsndc8cbbaf3852",
+      "x-rapidapi-key": process.env.GOOGLE_API_KEY,
       "x-rapidapi-host": "google-search74.p.rapidapi.com",
     },
   };

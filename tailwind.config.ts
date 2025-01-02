@@ -9,12 +9,22 @@ export default {
   ],
   theme: {
   	extend: {
-  		colors:{
-			primary:"#BF00FF",
-			secondary:"#6F00FF",
-			tertiary:"#E5E4E2",
-			bg_color:"#F5F5F5",
-		}
+  		colors: {
+  			primary: '#BF00FF',
+  			secondary: '#6F00FF',
+  			tertiary: '#E5E4E2',
+  			bg_color: '#F5F5F5',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
